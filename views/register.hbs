@@ -1,9 +1,20 @@
-<div class="d-flex border">
+<div class="d-flex border mb-4">
   <div class="login d-flex flex-column align-items-center" style="width:70%">
-    <div class="p-5" style="width: 80%;">
-      <h1 class="text-center mb-4">Register</h1>
+    <div class="py-3 px-5" style="width: 80%;">
+      <h1 class="text-center my-4">Register</h1>
 
-      <form action="/users/login" method="post">
+      <form action="/users/register" method="post">
+        <div class="mb-3">
+          <label for="Name" class="form-label">Name</label>
+          <input
+            type="Name"
+            class="form-control"
+            id="Name"
+            placeholder="Enter Your Name"
+            name="name"
+            value="{{name}}"
+          />
+        </div>
         <div class="mb-3">
           <label for="Email" class="form-label">Email</label>
           <input
@@ -12,6 +23,7 @@
             id="Email"
             placeholder="Email"
             name="email"
+            value="{{email}}"
           />
         </div>
         <div class="mb-3">
@@ -22,12 +34,37 @@
             id="Password"
             placeholder="Password"
             name="password"
+            value="{{password}}"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="confirmPassword" class="form-label">Confirm Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+            placeholder="Enter Password Again"
+            name="confirmPassword"
+            value="{{confirmPassword}}"
           />
         </div>
         <div class="d-flex justify-content-center my-4 flex-column">
-          <button type="submit" class="btn btn-primary mb-2">Login</button>
-          <div class="SSO"></div>
-          <a href="/auth/facebook" ><img src="../public/image/facebook.png" alt="facebook"></a>
+          <button type="submit" class="btn btn-primary mb-2">Sign Up</button>
+          <div class="mt-2 SSO d-flex justify-content-evenly">
+            <a href="/auth/facebook"><img
+                src="https://cdn2.iconfinder.com/data/icons/social-media-2285/512/1_Facebook_colored_svg_copy-256.png"
+                alt="facebook"
+              /></a>
+            <a href="/auth/google"><img
+                src="https://cdn2.iconfinder.com/data/icons/social-media-free-20/32/google_search_online_social_media-2-256.png"
+                alt="google"
+              /></a>
+            <a href="/auth/github"><img
+                src="https://cdn4.iconfinder.com/data/icons/miu-black-social-2/60/github-256.png"
+                alt="github"
+              /></a>
+
+          </div>
         </div>
 
         {{#if errorMessage}}

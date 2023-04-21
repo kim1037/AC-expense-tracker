@@ -2,17 +2,18 @@
   color: black;
 }
 
-th, td{
-text-align: center;
-} 
+th,
+td {
+  text-align: center;
+}
 
-#login-no-account{
+#login-no-account {
   position: relative;
-  width:30%;
-  background: url('https://images.unsplash.com/photo-1617329636938-90cf1b12c279?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+  width: 30%;
+  background: url("https://images.unsplash.com/photo-1617329636938-90cf1b12c279?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
   background-repeat: no-repeat;
   background-position: 75% center;
-  background-size: auto 100% ;
+  background-size: auto 100%;
   text-align: center;
 }
 
@@ -28,15 +29,28 @@ text-align: center;
 
 .login-new-content {
   position: relative;
-  top:25%;
+  top: 25%;
+}
+.login-new-content h5,
+p {
+  text-shadow: 0.1em 0.1em 0.2em rgba(147, 147, 147, 0.866);
 }
 
-.delete-icon{
-  color:rgb(234, 2, 2); 
-  background:none ;
-  border:none;
+.delete-icon {
+  color: rgb(234, 2, 2);
+  background: none;
+  border: none;
 }
 
-.edit-icon{
-  color: blue;
+.edit-icon {
+  color: rgb(46, 102, 232);
+}
+
+.SSO img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.input-group-text {
+  width: 25%;
 }

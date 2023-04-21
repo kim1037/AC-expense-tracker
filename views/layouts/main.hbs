@@ -10,18 +10,19 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/stylesheets/style.css" />
+    <link rel="icon" href="https://fontawesome.com/icons/circle-dollar-to-slot?f=sharp&s=solid" type="image/icon type"/>
   </head>
   <body>
     <header>
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid mx-4">
-          <a class="navbar-brand" href="/">My Expense Tracker</a>
-          <a class="btn btn-outline-primary" href="/" role="button">Logout</a>
+          <a class="navbar-brand" href="/"><i class="fa-sharp fa-solid fa-circle-dollar-to-slot"></i> My Expense Tracker</a>
+          <a class="btn btn-outline-primary" href="/users/login" role="button">Logout</a>
         </div>
       </nav>
     </header>
-    <div class="container mt-3">
-      <div class="main mx-auto" style="width: 70%; margin-top:5%">
+    <div class="container">
+      <div class="main mx-auto" style="width: 70%; margin: 3% 0;">
               {{{body}}}
       </div>
 
