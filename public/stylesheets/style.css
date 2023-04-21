@@ -1,3 +1,42 @@
 .fa-trash-can:hover {
-  color: rgb(219, 0, 0);
+  color: black;
+}
+
+th, td{
+text-align: center;
+} 
+
+#login-no-account{
+  position: relative;
+  width:30%;
+  background: url('https://images.unsplash.com/photo-1617329636938-90cf1b12c279?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80');
+  background-repeat: no-repeat;
+  background-position: 75% center;
+  background-size: auto 100% ;
+  text-align: center;
+}
+
+#login-no-account::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.login-new-content {
+  position: relative;
+  top:25%;
+}
+
+.delete-icon{
+  color:rgb(234, 2, 2); 
+  background:none ;
+  border:none;
+}
+
+.edit-icon{
+  color: blue;
 }

@@ -1,0 +1,46 @@
+<div class="d-flex border">
+  <div class="login d-flex flex-column align-items-center" style="width:70%">
+    <div class="p-5" style="width: 80%;">
+      <h1 class="text-center mb-4">Register</h1>
+
+      <form action="/users/login" method="post">
+        <div class="mb-3">
+          <label for="Email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="Email"
+            placeholder="Email"
+            name="email"
+          />
+        </div>
+        <div class="mb-3">
+          <label for="Password" class="form-label">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            id="Password"
+            placeholder="Password"
+            name="password"
+          />
+        </div>
+        <div class="d-flex justify-content-center my-4 flex-column">
+          <button type="submit" class="btn btn-primary mb-2">Login</button>
+          <div class="SSO"></div>
+          <a href="/auth/facebook" ><img src="../public/image/facebook.png" alt="facebook"></a>
+        </div>
+
+        {{#if errorMessage}}
+          <p class="text-danger mt-3 text-center">{{errorMessage}}</p>
+        {{/if}}
+      </form>
+    </div>
+  </div>
+  <div id="login-no-account">
+    <div class="login-new-content">
+      <h5>Already have an Account?</h5>
+      <p>Sign in and build your own expense tracker!</p>
+      <a href="/users/login" class="mt-5 btn btn-outline-info">Sign In</a>
+    </div>
+  </div>
+</div>
