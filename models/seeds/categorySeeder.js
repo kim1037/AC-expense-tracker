@@ -1,12 +1,12 @@
 const Category = require("../category");
 const db = require("../../config/mongoose");
 const CATEGORY = {
-  Housing: '<i class="fa-solid fa-house"></i>',
-  Transportation: '<i class="fa-solid fa-van-shuttle"></i>',
-  Entertainment: '<i class="fa-solid fa-face-grin-beam"></i>',
-  Food: '<i class="fa-solid fa-utensils"></i>',
-  Other: '<i class="fa-solid fa-pen"></i>',
-  Income: '<i class="fa-solid fa-money-bill-1-wave"></i>',
+  Housing: 'fa-solid fa-house',
+  Transportation: 'fa-solid fa-van-shuttle',
+  Entertainment: 'fa-solid fa-face-grin-beam',
+  Food: 'fa-solid fa-utensils',
+  Other: 'fa-solid fa-pen',
+  Income: 'fa-solid fa-money-bill-1-wave',
 };
 
 const categories = [];
