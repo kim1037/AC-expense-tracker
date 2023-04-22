@@ -33,7 +33,7 @@ td {
 }
 .login-new-content h5,
 p {
-  text-shadow: 0.1em 0.1em 0.2em rgba(147, 147, 147, 0.866);
+  text-shadow: 0.05em 0.05em 0.15em rgba(147, 147, 147, 0.866);
 }
 
 .delete-icon {
