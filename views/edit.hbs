@@ -1,12 +1,12 @@
 <div class="d-flex flex-column align-items-center">
   <h3>Edit an expense</h3>
   <div class="my-3" style="width: 80%;">
-    <form action="/expense/new" method="POST">
+    <form action="/expense/edit/{{record._id}}?_method=PUT" method="POST">
       <div class="mb-3 d-flex">
         <label for="numberType" class="input-group-text">Type*</label>
-        <select name="numberType" class="form-select" id="numberType" required>
-          <option value="">Income</option>
-          <option value="">Outcome</option>
+        <select name="type" class="form-select" id="numberType" value="{{record.type}}" required>
+          <option value="income" {{selected record.type 'income'}}>Income</option>
+          <option value="outcome" {{selected record.type 'outcome'}}>Outcome</option>
         </select>
       </div>
       <div class="mb-3 d-flex">
@@ -16,7 +16,7 @@
           id="name"
           name="name"
           class="form-control"
-          value="{{name}}"
+          value="{{record.name}}"
         />
       </div>
       <div class="mb-3 d-flex">
@@ -26,15 +26,15 @@
           name="date"
           class="form-control"
           id="date"
-          value="{{date}}"
+          value="{{record.date}}"
         />
       </div>
       <div class="mb-3 d-flex">
         <label for="category" class="input-group-text">Category*</label>
-        <select name="category" class="form-select" id="category" required>
+        <select name="category" class="form-select" id="category" value="{{category.name}}" required>
           <option value="">Choose...</option>
           {{#each categories}}
-            <option value="{{this._id}}">{{this.name}}</option>
+            <option value="{{this._id}}" {{selected category.name this.name}}>{{this.name}}</option>
           {{/each}}
         </select>
       </div>
@@ -46,7 +46,7 @@
           name="amount"
           class="form-control"
           min="1"
-          value="{{amount}}"
+          value="{{record.amount}}"
         />
       </div>
       <div class="btn-control d-flex just-content-evenly">

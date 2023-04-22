@@ -9,7 +9,7 @@ node_modules/
 *.gz
 
 #
-mongoDB.txt
+note.txt
 
 # dotenv
 .env

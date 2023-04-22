@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const Record = require("../../models/record");
 const Category = require("../../models/category");
-const record = require("../../models/record");
 
 router.get("/", (req, res) => {
   // const userId = req.user._id

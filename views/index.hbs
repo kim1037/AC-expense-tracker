@@ -53,11 +53,11 @@
                 <td>{{this.name}}</td>
                 <td>{{this.date}}</td>
                 <td>{{this.amount}}</td>
-                <td><a href="/expense/edit" class="edit-icon"><i
+                <td><a href="/expense/edit/{{this._id}}" class="edit-icon"><i
                       class="fa-solid fa-pen-to-square"
                     ></i></a></td>
                 <td>
-                  <form action="/" method="POST" style="display: inline;">
+                  <form action="/expense/delete/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
                     <button type="submit" class="delete-icon">
                       <i class="fa-solid fa-trash-can"></i>
                     </button>
@@ -65,39 +65,6 @@
                 </td>
               </tr>
             {{/each}}
-
-            {{! <tr>
-              <td><img src="https://cdn2.iconfinder.com/data/icons/winter-town-filledoutline/64/BUS-transportation-automobile-bus-vehicle-256.png" alt="" style="width:1.5rem; heigth:1.5rem;"></i></td>
-              <td>午餐1</td>
-              <td>2024-12-10</td>
-              <td>100</td>
-              <td><a href="/expense/edit" class="edit-icon"><i
-                    class="fa-solid fa-pen-to-square"
-                  ></i></a></td>
-              <td>
-                <form action="/" method="POST" style="display: inline;">
-                  <button type="submit" class="delete-icon">
-                    <i class="fa-solid fa-trash-can"></i>
-                  </button>
-                </form>
-              </td>
-            </tr>
-            <tr>
-              <td><i class="fa-solid fa-face-laugh-beam"></i></td>
-              <td>午餐</td>
-              <td>2024-12-10</td>
-              <td>100</td>
-              <td><a href="/expense/edit" class="edit-icon"><i
-                    class="fa-solid fa-pen-to-square"
-                  ></i></a></td>
-              <td>
-                <form action="/" method="POST" style="display: inline;">
-                  <button type="submit" class="delete-icon">
-                    <i class="fa-solid fa-trash-can"></i>
-                  </button>
-                </form>
-              </td>
-            </tr> }}
           </tbody>
         </table>
       </div></div>
