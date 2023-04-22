@@ -36,6 +36,7 @@
         <table class="table table-hover">
           <thead class="table-dark">
             <tr>
+              <th scope="col">Type</th>
               <th scope="col">Category</th>
               <th scope="col">Name</th>
               <th scope="col">Date</th>
@@ -45,23 +46,27 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td><img src="https://cdn1.iconfinder.com/data/icons/city-filled-outline-1/512/house_home_front_building_urban_garage-256.png" alt="" style="width:1.5rem; heigth:1.5rem;"></td>
-              <td>午餐</td>
-              <td>2024-12-10</td>
-              <td>100</td>
-              <td><a href="/expense/edit" class="edit-icon"><i
-                    class="fa-solid fa-pen-to-square"
-                  ></i></a></td>
-              <td>
-                <form action="/" method="POST" style="display: inline;">
-                  <button type="submit" class="delete-icon">
-                    <i class="fa-solid fa-trash-can"></i>
-                  </button>
-                </form>
-              </td>
-            </tr>
-            <tr>
+            {{#each finalRecords}}
+              <tr>
+                <td>{{this.type}}</td>
+                <td><i class="fa-solid fa-face-laugh-beam"></i></td>
+                <td>{{this.name}}</td>
+                <td>{{this.date}}</td>
+                <td>{{this.amount}}</td>
+                <td><a href="/expense/edit" class="edit-icon"><i
+                      class="fa-solid fa-pen-to-square"
+                    ></i></a></td>
+                <td>
+                  <form action="/" method="POST" style="display: inline;">
+                    <button type="submit" class="delete-icon">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </form>
+                </td>
+              </tr>
+            {{/each}}
+
+            {{! <tr>
               <td><img src="https://cdn2.iconfinder.com/data/icons/winter-town-filledoutline/64/BUS-transportation-automobile-bus-vehicle-256.png" alt="" style="width:1.5rem; heigth:1.5rem;"></i></td>
               <td>午餐1</td>
               <td>2024-12-10</td>
@@ -92,7 +97,7 @@
                   </button>
                 </form>
               </td>
-            </tr>
+            </tr> }}
           </tbody>
         </table>
       </div></div>
