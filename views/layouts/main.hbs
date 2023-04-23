@@ -10,20 +10,39 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/stylesheets/style.css" />
-    <link rel="icon" href="https://fontawesome.com/icons/circle-dollar-to-slot?f=sharp&s=solid" type="image/icon type"/>
+    <link
+      rel="icon"
+      href="https://fontawesome.com/icons/circle-dollar-to-slot?f=sharp&s=solid"
+      type="image/icon type"
+    />
   </head>
   <body>
     <header>
       <nav class="navbar navbar-light bg-light">
         <div class="container-fluid mx-4">
-          <a class="navbar-brand" href="/"><i class="fa-sharp fa-solid fa-circle-dollar-to-slot"></i> My Expense Tracker</a>
-          <a class="btn btn-outline-primary" href="/users/login" role="button">Logout</a>
+          <a class="navbar-brand" href="/"><i
+              class="fa-sharp fa-solid fa-circle-dollar-to-slot"
+            ></i>
+            {{#if isAuthenticated}}{{user.name}}'s{{else}}My{{/if}} Expense Tracker</a>
+          {{#if isAuthenticated}}
+            <a
+              class="btn btn-outline-primary"
+              href="/users/logout"
+              role="button"
+            >Logout</a>
+          {{else}}
+            <a
+              class="btn btn-outline-primary"
+              href="/users/login"
+              role="button"
+            >Login</a>
+          {{/if}}
         </div>
       </nav>
     </header>
     <div class="container">
       <div class="main mx-auto" style="width: 70%; margin: 3% 0;">
-              {{{body}}}
+        {{{body}}}
       </div>
 
     </div>

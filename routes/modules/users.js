@@ -4,7 +4,11 @@ const User = require("../../models/user");
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 
-router.get(
+router.get("/login", (req, res) => {
+  res.render("login");
+});
+
+router.post(
   "/login",
   passport.authenticate("local", {
     successRedirect: "/",
@@ -12,17 +16,12 @@ router.get(
   })
 );
 
-router.post("/login", (req, res) => {
-  res.render("/");
-});
-
 router.get("/register", (req, res) => {
   res.render("register");
 });
 
 router.post("/register", (req, res) => {
   const { name, email, password, confirmPassword } = req.body;
-  let message = "";
   User.findOne({ email })
     .lean()
     .then((user) => {
