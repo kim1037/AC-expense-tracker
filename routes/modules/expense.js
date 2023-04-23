@@ -23,8 +23,9 @@ router.post("/new", (req, res) => {
 });
 
 router.get("/edit/:id", (req, res) => {
+  const userId = req.user._id;
   const _id = req.params.id;
-  return Record.findOne({ _id })
+  return Record.findOne({ _id, userId })
     .lean()
     .then((record) => {
       Category.find()
@@ -44,16 +45,16 @@ router.get("/edit/:id", (req, res) => {
 
 router.put("/edit/:id", (req, res) => {
   const _id = req.params.id;
-  // const userId = req.user._id;
-  Record.findOneAndUpdate({ _id }, req.body)
+  const userId = req.user._id;
+  Record.findOneAndUpdate({ _id, userId }, req.body)
     .then(() => res.redirect("/"))
     .catch((e) => console.log(e));
 });
 
 router.delete("/delete/:id", (req, res) => {
   const _id = req.params.id;
-  // const userId = req.user._id;
-  Record.findOne({ _id })
+  const userId = req.user._id;
+  Record.findOne({ _id, userId })
     .then((record) => {
       return record.remove();
     })
