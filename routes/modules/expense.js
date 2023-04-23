@@ -4,7 +4,22 @@ const Record = require("../../models/record");
 const Category = require("../../models/category");
 
 router.get("/new", (req, res) => {
-  res.render("new");
+  Category.find()
+    .lean()
+    .then((categories) => {
+      res.render("new", { categories });
+    })
+    .catch((e) => console.log(e));
+});
+
+router.post("/new", (req, res) => {
+  const userId = req.user._id;
+  const { type, name, date, categoryId, amount } = req.body;
+  Record.create({ type, name, date, categoryId, amount, userId })
+    .then(() => {
+      res.redirect("/");
+    })
+    .catch((e) => console.log(e));
 });
 
 router.get("/edit/:id", (req, res) => {

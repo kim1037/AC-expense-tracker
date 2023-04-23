@@ -4,9 +4,9 @@
     <form action="/expense/new" method="POST">
       <div class="mb-3 d-flex">
         <label for="numberType" class="input-group-text">Type*</label>
-        <select name="numberType" class="form-select" id="numberType" required>
-          <option value="">Income</option>
-          <option value="">Outcome</option>
+        <select name="type" class="form-select" id="numberType">
+          <option value="income">Income</option>
+          <option value="outcome">Outcome</option>
         </select>
       </div>
       <div class="mb-3 d-flex">
@@ -31,7 +31,7 @@
       </div>
       <div class="mb-3 d-flex">
         <label for="category" class="input-group-text">Category*</label>
-        <select name="category" class="form-select" id="category" required>
+        <select name="categoryId" class="form-select" id="category" required>
           <option value="">Choose...</option>
           {{#each categories}}
             <option value="{{this._id}}">{{this.name}}</option>

@@ -4,10 +4,10 @@ const Record = require("../../models/record");
 const Category = require("../../models/category");
 
 router.get("/", (req, res) => {
-  // const userId = req.user._id
+  const userId = req.user._id;
   let income = 0;
   let outcome = 0;
-  Record.find()
+  Record.find({ userId })
     .lean()
     .then((records) => {
       const promises = records.map((record) => {
