@@ -34,17 +34,17 @@ router.get("/", (req, res) => {
       return Promise.all(promises);
     })
     .then((finalRecords) => {
-      let balance = income - outcome;
-      const balanceColor = balance >= 0 ? "info" : "danger";
+      let totalAmount = income - outcome;
+      const totalAmountColor = totalAmount >= 0 ? "info" : "danger";
       income = income.toLocaleString();
       outcome = outcome.toLocaleString();
-      balance = String(balance).replace(/\d(?=(\d{3})+$)/g, "$&,");
+      totalAmount = String(totalAmount).replace(/\d(?=(\d{3})+$)/g, "$&,");
       res.render("index", {
         finalRecords,
         income,
         outcome,
-        balance,
-        balanceColor,
+        totalAmount,
+        totalAmountColor,
       });
     })
     .catch((err) => console.error(err));
