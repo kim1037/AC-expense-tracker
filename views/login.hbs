@@ -2,7 +2,7 @@
   <div class="login d-flex flex-column align-items-center" style="width:70%">
     <div class="p-5" style="width: 80%;">
       <h1 class="text-center mb-4">Account Login</h1>
-
+ {{> message}}
       <form action="/users/login" method="post">
         <div class="mb-3">
           <label for="Email" class="form-label">Email</label>
@@ -42,10 +42,10 @@
 
           </div>
         </div>
-
+{{!-- 
         {{#if message}}
           <p class="text-danger mt-3 text-center">{{message}}</p>
-        {{/if}}
+        {{/if}} --}}
       </form>
     </div>
   </div>

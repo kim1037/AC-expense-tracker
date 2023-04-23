@@ -25,26 +25,25 @@ router.post("/register", (req, res) => {
   User.findOne({ email })
     .lean()
     .then((user) => {
+      const errors = [];
       if (user) {
-        return res.render("register", { message: "This email exists." });
+        errors.push({ message: "This email exists." });
       }
 
       if (!name || !email || !password || !confirmPassword) {
-        return res.render("register", {
-          name,
-          email,
-          password,
-          confirmPassword,
-          message: "All field is required.",
-        });
+        errors.push({ message: "All field is required." });
       }
       if (password !== confirmPassword) {
+        errors.push({ message: "Confirm password must be same with password." });
+      }
+
+      if (errors.length) {
         return res.render("register", {
           name,
           email,
           password,
           confirmPassword,
-          message: "Confirm Password must be same with password.",
+          errors,
         });
       }
 
@@ -65,7 +64,8 @@ router.post("/register", (req, res) => {
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/");
+  req.flash("success_msg", "Logout success.");
+  res.redirect("/users/login");
 });
 
 module.exports = router;
