@@ -17,6 +17,7 @@
           name="name"
           class="form-control"
           value="{{record.name}}"
+          required
         />
       </div>
       <div class="mb-3 d-flex">
@@ -27,14 +28,15 @@
           class="form-control"
           id="date"
           value="{{record.date}}"
+          required
         />
       </div>
       <div class="mb-3 d-flex">
         <label for="category" class="input-group-text">Category*</label>
-        <select name="category" class="form-select" id="category" value="{{category.name}}" required>
+        <select name="category" class="form-select" id="category" required>
           <option value="">Choose...</option>
           {{#each categories}}
-            <option value="{{this._id}}" {{selected category.name this.name}}>{{this.name}}</option>
+            <option value="{{this._id}}" {{selected this.name ../category}}>{{this.name}}</option>
           {{/each}}
         </select>
       </div>
@@ -47,6 +49,7 @@
           class="form-control"
           min="1"
           value="{{record.amount}}"
+          required
         />
       </div>
       <div class="btn-control d-flex just-content-evenly">

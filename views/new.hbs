@@ -4,7 +4,7 @@
     <form action="/expense/new" method="POST">
       <div class="mb-3 d-flex">
         <label for="numberType" class="input-group-text">Type*</label>
-        <select name="type" class="form-select" id="numberType">
+        <select name="type" class="form-select" id="numberType" required>
           <option value="income">Income</option>
           <option value="expense">Expense</option>
         </select>
@@ -17,6 +17,7 @@
           name="name"
           class="form-control"
           value="{{name}}"
+          required
         />
       </div>
       <div class="mb-3 d-flex">
@@ -26,7 +27,10 @@
           name="date"
           class="form-control"
           id="date"
+          min="1900-01-01"
+          max="2100-12-31"
           value="{{date}}"
+          required
         />
       </div>
       <div class="mb-3 d-flex">
@@ -47,6 +51,7 @@
           class="form-control"
           min="1"
           value="{{amount}}"
+          required
         />
       </div>
       <div class="btn-control d-flex just-content-evenly">

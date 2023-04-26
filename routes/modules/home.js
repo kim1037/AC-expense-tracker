@@ -16,8 +16,10 @@ router.get("/", (req, res) => {
           return Promise.all(
             records.map((record) => {
               const icon = categories.find(
-                (category) => category._id.toString() === record.categoryId.toString()
+                (category) =>
+                  category._id.toString() === record.categoryId.toString()
               ).icon;
+              //new Date(record.date).toLocaleString().substring(0, 9)
               const formatDate = new Date(record.date);
               record.date = formatDate.toISOString().slice(0, 10);
               if (record.type === "income") {
@@ -52,7 +54,9 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/sortby", (req, res) => {
+router.get("/sort", (req, res) => {
+  const { categoryFilter, sortWay, sortBy } = req.query;
+  console.log(categoryFilter, sortWay, sortBy);
   res.render("index");
 });
 

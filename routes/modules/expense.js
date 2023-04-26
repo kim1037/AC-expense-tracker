@@ -36,7 +36,7 @@ router.get("/edit/:id", (req, res) => {
               return cate;
             }
           });
-          res.render("edit", { record, categories, category });
+          res.render("edit", { record, categories, category: category.name });
         })
         .catch((err) => console.log(err));
     })

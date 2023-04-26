@@ -1,41 +1,43 @@
 <div>
   <div class="row mb-3 d-flex justify-content-center">
-    <div class="input-group mb-2">
-      <label class="input-group-text" for="categoryFilter">Filter</label>
-      <select
-        name="categoryFilter"
-        class="form-select ms-2"
-        id="categoryFilter"
-      >
-        <option selected>Category</option>
-        {{#each categories}}
-          <option value="{{this._id}}">{{this.name}}</option>
-        {{/each}}
-      </select>
-    </div>
-    <div class="input-group">
-      <label for="sortWay" class="input-group-text">Sort By</label>
-      <select
-        name="sortWay"
-        class="form-select mx-2"
-        id="sortWay"
-        onchange="this.form.submit()"
-      >
-        <option value="asc">Ascending order</option>
-        <option value="desc">Descending order</option>
-      </select>
-      <select
-        name="sortBy"
-        class="form-select"
-        id="sortBy"
-        onchange="this.form.submit()"
-      >
-        <option value="date">Date</option>
-        <option value="category">Category</option>
-        <option value="name">Name</option>
-        <option value="amount">Amount</option>
-      </select>
-    </div>
+    <form action="/sort" method="get">
+      <div class="input-group mb-2">
+        <label class="input-group-text" for="categoryFilter">Filter</label>
+        <select
+          name="categoryFilter"
+          class="form-select ms-2"
+          id="categoryFilter"
+        >
+          <option selected>Category</option>
+          {{#each categories}}
+            <option value="{{this._id}}">{{this.name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="input-group">
+        <label for="sortWay" class="input-group-text">Sort By</label>
+        <select
+          name="sortWay"
+          class="form-select mx-2"
+          id="sortWay"
+          onchange="this.form.submit()"
+        >
+          <option value="asc">Ascending order</option>
+          <option value="desc">Descending order</option>
+        </select>
+        <select
+          name="sortBy"
+          class="form-select"
+          id="sortBy"
+          onchange="this.form.submit()"
+        >
+          <option value="date">Date</option>
+          <option value="category">Category</option>
+          <option value="name">Name</option>
+          <option value="amount">Amount</option>
+        </select>
+      </div>
+    </form>
   </div>
   <div class="mb-3">
     <div class="card border-0">
