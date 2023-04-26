@@ -5,11 +5,27 @@ const bcrypt = require("bcryptjs");
 const passport = require("passport");
 
 router.get("/login", (req, res) => {
-  res.render("login");
+  const { email, rememberMe } = req.session;
+  if (rememberMe) {
+    res.render("login", { email, rememberMe });
+  } else {
+    res.render("login");
+  }
 });
 
 router.post(
   "/login",
+  function (req, res, next) {
+    const { email, rememberMe } = req.body;
+    if (rememberMe === "on") {
+      req.session.email = email;
+      req.session.rememberMe = true;
+    } else {
+      req.session.email = null;
+      req.session.rememberMe = false;
+    }
+    next();
+  },
   passport.authenticate("local", {
     successRedirect: "/",
     failureRedirect: "/users/login",
@@ -35,7 +51,9 @@ router.post("/register", (req, res) => {
         errors.push({ message: "All field is required." });
       }
       if (password !== confirmPassword) {
-        errors.push({ message: "Confirm password must be same with password." });
+        errors.push({
+          message: "Confirm password must be same with password.",
+        });
       }
 
       if (errors.length) {

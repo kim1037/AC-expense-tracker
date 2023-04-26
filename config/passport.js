@@ -23,7 +23,6 @@ module.exports = (app) => {
                 req.flash("warning_msg", "This email does not exist.")
               );
             }
-
             return bcrypt.compare(password, user.password).then((isMatch) => {
               if (!isMatch) {
                 return done(

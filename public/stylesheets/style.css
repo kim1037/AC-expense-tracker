@@ -2,6 +2,11 @@
   color: black;
 }
 
+.table td,
+.table th {
+  padding: 1.2rem;
+}
+
 th,
 td {
   text-align: center;
