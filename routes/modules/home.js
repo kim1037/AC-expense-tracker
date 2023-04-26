@@ -19,9 +19,7 @@ router.get("/", (req, res) => {
                 (category) =>
                   category._id.toString() === record.categoryId.toString()
               ).icon;
-              //new Date(record.date).toLocaleString().substring(0, 9)
-              const formatDate = new Date(record.date);
-              record.date = formatDate.toISOString().slice(0, 10);
+              record.date = new Date(record.date).toISOString().slice(0, 10);
               if (record.type === "income") {
                 income += record.amount;
               } else if (record.type === "expense") {
@@ -40,7 +38,8 @@ router.get("/", (req, res) => {
           const totalAmountColor = totalAmount >= 0 ? "info" : "danger";
           income = income.toLocaleString();
           expense = expense.toLocaleString();
-          totalAmount = String(totalAmount).replace(/\d(?=(\d{3})+$)/g, "$&,");
+          totalAmount = totalAmount.toLocaleString();
+
           res.render("index", {
             categories,
             finalRecords,
@@ -50,14 +49,59 @@ router.get("/", (req, res) => {
             totalAmountColor,
           });
         })
-        .catch((err) => console.error(err));;
+        .catch((err) => console.error(err));
     });
 });
 
-router.get("/sort", (req, res) => {
+//practice async/await
+router.get("/sort", async (req, res) => {
   const { categoryFilter, sortWay, sortBy } = req.query;
-  console.log(categoryFilter, sortWay, sortBy);
-  res.render("index");
+  const userId = req.user._id;
+  let income = 0;
+  let expense = 0;
+  const sort = {};
+  sort[sortBy] = sortWay;
+
+  const categories = await Category.find().lean();
+  const records = categoryFilter
+    ? await Record.find({ userId, categoryId: categoryFilter })
+        .sort(sort)
+        .lean()
+    : await Record.find({ userId }).sort(sort).lean();
+  const finalRecords = records.map((record) => {
+    const icon = categories.find(
+      (category) => category._id.toString() === record.categoryId.toString()
+    ).icon;
+    record.date = new Date(record.date).toISOString().slice(0, 10);
+    if (record.type === "income") {
+      income += record.amount;
+    } else if (record.type === "expense") {
+      expense += record.amount;
+    }
+    const formattedRecord = {
+      ...record,
+      icon,
+    };
+    return formattedRecord;
+  });
+  let totalAmount = income - expense;
+  const totalAmountColor = totalAmount >= 0 ? "info" : "danger";
+  income = income.toLocaleString();
+  expense = expense.toLocaleString();
+  totalAmount = totalAmount.toLocaleString();
+  res.render("index", {
+    categories,
+    finalRecords,
+    income,
+    expense,
+    totalAmount,
+    totalAmountColor,
+    categoryFilter: categoryFilter
+      ? categories.find((c) => c._id.toString() === categoryFilter).name
+      : "",
+    sortWay,
+    sortBy,
+  });
 });
 
 module.exports = router;

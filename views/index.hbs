@@ -7,10 +7,11 @@
           name="categoryFilter"
           class="form-select ms-2"
           id="categoryFilter"
+          onchange="this.form.submit()"
         >
-          <option selected>Category</option>
+          <option value="" {{selected categoryFilter ""}}>Category</option>
           {{#each categories}}
-            <option value="{{this._id}}">{{this.name}}</option>
+            <option value="{{this._id}}" {{selected this.name ../categoryFilter}}>{{this.name}}</option>
           {{/each}}
         </select>
       </div>
@@ -22,8 +23,8 @@
           id="sortWay"
           onchange="this.form.submit()"
         >
-          <option value="asc">Ascending order</option>
-          <option value="desc">Descending order</option>
+          <option value="asc" {{selected sortWay 'asc'}}>Ascending order</option>
+          <option value="desc" {{selected sortWay 'desc'}}>Descending order</option>
         </select>
         <select
           name="sortBy"
@@ -31,10 +32,10 @@
           id="sortBy"
           onchange="this.form.submit()"
         >
-          <option value="date">Date</option>
-          <option value="category">Category</option>
-          <option value="name">Name</option>
-          <option value="amount">Amount</option>
+          <option value="date" {{selected sortBy 'date'}}>Date</option>
+          <option value="category" {{selected sortBy 'category'}}>Category</option>
+          <option value="name" {{selected sortBy 'name'}}>Name</option>
+          <option value="amount" {{selected sortBy 'amount'}}>Amount</option>
         </select>
       </div>
     </form>
