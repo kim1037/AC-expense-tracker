@@ -28,6 +28,7 @@ router.get("/edit/:id", (req, res) => {
   return Record.findOne({ _id, userId })
     .lean()
     .then((record) => {
+      record.date = new Date(record.date).toISOString().slice(0, 10);
       Category.find()
         .lean()
         .then((categories) => {
