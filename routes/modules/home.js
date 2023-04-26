@@ -6,48 +6,54 @@ const Category = require("../../models/category");
 router.get("/", (req, res) => {
   const userId = req.user._id;
   let income = 0;
-  let outcome = 0;
-  Record.find({ userId })
+  let expense = 0;
+  Category.find()
     .lean()
-    .then((records) => {
-      const promises = records.map((record) => {
-        //mongoDB的日期格式太長, 另外處理
-        const formatDate = new Date(record.date);
-        record.date = formatDate.toISOString().slice(0, 10);
-        if (record.type === "income") {
-          income += record.amount;
-        } else if (record.type === "outcome") {
-          outcome += record.amount;
-        }
-        return new Promise((resolve, reject) => {
-          Category.findOne({ _id: record.categoryId })
-            .lean()
-            .then((category) => {
-              const newRecord = Object.assign({}, record, {
-                icon: category.icon,
-              });
-              resolve(newRecord);
+    .then((categories) => {
+      Record.find({ userId })
+        .lean()
+        .then((records) => {
+          return Promise.all(
+            records.map((record) => {
+              const icon = categories.find(
+                (category) => category._id.toString() === record.categoryId.toString()
+              ).icon;
+              const formatDate = new Date(record.date);
+              record.date = formatDate.toISOString().slice(0, 10);
+              if (record.type === "income") {
+                income += record.amount;
+              } else if (record.type === "expense") {
+                expense += record.amount;
+              }
+              const formattedRecord = {
+                ...record,
+                icon,
+              };
+              return formattedRecord;
             })
-            .catch((err) => reject(err));
-        });
-      });
-      return Promise.all(promises);
-    })
-    .then((finalRecords) => {
-      let totalAmount = income - outcome;
-      const totalAmountColor = totalAmount >= 0 ? "info" : "danger";
-      income = income.toLocaleString();
-      outcome = outcome.toLocaleString();
-      totalAmount = String(totalAmount).replace(/\d(?=(\d{3})+$)/g, "$&,");
-      res.render("index", {
-        finalRecords,
-        income,
-        outcome,
-        totalAmount,
-        totalAmountColor,
-      });
-    })
-    .catch((err) => console.error(err));
+          );
+        })
+        .then((finalRecords) => {
+          let totalAmount = income - expense;
+          const totalAmountColor = totalAmount >= 0 ? "info" : "danger";
+          income = income.toLocaleString();
+          expense = expense.toLocaleString();
+          totalAmount = String(totalAmount).replace(/\d(?=(\d{3})+$)/g, "$&,");
+          res.render("index", {
+            categories,
+            finalRecords,
+            income,
+            expense,
+            totalAmount,
+            totalAmountColor,
+          });
+        })
+        .catch((err) => console.error(err));;
+    });
+});
+
+router.get("/sortby", (req, res) => {
+  res.render("index");
 });
 
 module.exports = router;

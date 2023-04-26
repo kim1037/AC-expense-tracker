@@ -1,20 +1,49 @@
 <div>
-  <div class="row mb-3">
-    <select name="category" class="form-select">
-      <option selected>Category</option>
-      <option value="1">食</option>
-      <option value="2">衣</option>
-      <option value="3">住</option>
-      <option value="4">行</option>
-      <option value="5">育</option>
-      <option value="6">樂</option>
-    </select>
+  <div class="row mb-3 d-flex justify-content-center">
+    <div class="input-group mb-2">
+      <label class="input-group-text" for="categoryFilter">Filter</label>
+      <select
+        name="categoryFilter"
+        class="form-select ms-2"
+        id="categoryFilter"
+      >
+        <option selected>Category</option>
+        {{#each categories}}
+          <option value="{{this._id}}">{{this.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="input-group">
+      <label for="sortWay" class="input-group-text">Sort By</label>
+      <select
+        name="sortWay"
+        class="form-select mx-2"
+        id="sortWay"
+        onchange="this.form.submit()"
+      >
+        <option value="asc">Ascending order</option>
+        <option value="desc">Descending order</option>
+      </select>
+      <select
+        name="sortBy"
+        class="form-select"
+        id="sortBy"
+        onchange="this.form.submit()"
+      >
+        <option value="date">Date</option>
+        <option value="category">Category</option>
+        <option value="name">Name</option>
+        <option value="amount">Amount</option>
+      </select>
+    </div>
   </div>
   <div class="mb-3">
     <div class="card border-0">
       <div class="card-body d-flex flex-column align-items-center">
         <h5 class="card-title fw-bold">Your Balance</h5>
-        <h6 class="card-text fs-3 fw-bolder text-{{totalAmountColor}}">${{totalAmount}}</h6>
+        <h6
+          class="card-text fs-3 fw-bolder text-{{totalAmountColor}}"
+        >${{totalAmount}}</h6>
         <div
           class="row py-2 shadow-sm border rounded-3 font-monospace"
           style="width: 70%;"
@@ -24,15 +53,16 @@
             <h4 class="text-info">${{income}}</h4>
           </div>
           <div class="col text-center">
-            <h6>Outcome</h6>
-            <h4 class="text-danger">${{outcome}}</h4>
+            <h6>Expense</h6>
+            <h4 class="text-danger">${{expense}}</h4>
           </div>
         </div>
       </div>
     </div>
   </div>
   <div class="mb-3">
-    <div class="card"><div class="card-body">
+    <div class="card">
+      <div class="card-body">
         <table class="table table-hover">
           <thead class="table-dark">
             <tr>
@@ -57,7 +87,11 @@
                       class="fa-solid fa-pen-to-square"
                     ></i></a></td>
                 <td>
-                  <form action="/expense/delete/{{this._id}}?_method=DELETE" method="POST" style="display: inline;">
+                  <form
+                    action="/expense/delete/{{this._id}}?_method=DELETE"
+                    method="POST"
+                    style="display: inline;"
+                  >
                     <button type="submit" class="delete-icon">
                       <i class="fa-solid fa-trash-can"></i>
                     </button>
@@ -67,7 +101,8 @@
             {{/each}}
           </tbody>
         </table>
-      </div></div>
+      </div>
+    </div>
 
   </div>
   <div class="d-flex justify-content-center">
