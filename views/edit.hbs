@@ -1,10 +1,11 @@
 <div class="d-flex flex-column align-items-center">
   <h3>Edit an expense</h3>
   <div class="my-3" style="width: 80%;">
-    <form action="/expense/edit/{{record._id}}?_method=PUT" method="POST">
+    {{> message}}
+    <form action="/expense/edit/{{#if record._id}}{{record._id}}{{else}}{{_id}}{{/if}}?_method=PUT" method="POST" novalidate>
       <div class="mb-3 d-flex">
         <label for="numberType" class="input-group-text">Type*</label>
-        <select name="type" class="form-select" id="numberType" value="{{record.type}}" required>
+        <select name="type" class="form-select" id="numberType" value="{{#if record.type}}{{record.type}}{{else}}{{tpye}}{{/if}}" required>
           <option value="income" {{selected record.type 'income'}}>Income</option>
           <option value="expense" {{selected record.type 'expense'}}>Expense</option>
         </select>
@@ -16,7 +17,7 @@
           id="name"
           name="name"
           class="form-control"
-          value="{{record.name}}"
+          value="{{#if record.name}}{{record.name}}{{else}}{{name}}{{/if}}"
           required
         />
       </div>
@@ -27,7 +28,7 @@
           name="date"
           class="form-control"
           id="date"
-          value="{{record.date}}"
+          value="{{#if record.date}}{{record.date}}{{else}}{{date}}{{/if}}"
           required
         />
       </div>
@@ -48,7 +49,7 @@
           name="amount"
           class="form-control"
           min="1"
-          value="{{record.amount}}"
+          value="{{#if record.amount}}{{record.amount}}{{else}}{{amount}}{{/if}}"
           required
         />
       </div>
