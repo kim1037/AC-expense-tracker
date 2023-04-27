@@ -1,17 +1,21 @@
-# AC_expense_tracker
+# AC-expense-tracker
 
-使用 Node.js + Express + MongoDB 製作記帳web app，使用者可以註冊帳號、登入，並查看、新增、編輯或刪除專屬該用戶的收支明細。
+使用 Node.js + Express + MongoDB 製作記帳web app，使用者可以註冊帳號、登入，並查看、新增、編輯或刪除專屬該用戶的收支明細，另外使用了chart.js於首頁顯示費用圓餅圖。
 
 ## Screenshot - 畫面截圖
 
 #### Login & Register Page
 
+![image](https://user-images.githubusercontent.com/107454420/234933970-4fd625a3-64ac-4f50-95a4-1f6564cbd6e1.png)
+![image](https://user-images.githubusercontent.com/107454420/234934118-3d5a73fb-8dab-41eb-a289-82bf93a6adcd.png)
 
-#### 首頁 - 顯示收支明細及總計金額
 
+#### 首頁 - 顯示收支明細、總計金額及費用圓餅圖
+![image](https://user-images.githubusercontent.com/107454420/234933407-cff7b034-7b6b-4d76-85f0-8ef46341f443.png)
+![image](https://user-images.githubusercontent.com/107454420/234933565-0e60f5f7-191d-46b0-884d-468f1d21df3f.png)
 
 #### 新增頁面
-
+![image](https://user-images.githubusercontent.com/107454420/234933829-d5480b10-205c-490d-aa83-c37bcb956987.png)
 
 ## Features - 功能
 
@@ -23,6 +27,7 @@
 6. 使用者可以刪除一筆收支
 7. 使用者可以透過下拉式選單選擇篩選收支的類別
 8. 使用者可以透過下拉式選單選擇收支的排序方式
+9. 使用者於登入時可勾選remember me 記憶帳號以便下一次登入。
 
 ## Prerequisites - 環境設置
 
@@ -38,7 +43,7 @@
 1. 開啟 Terminal, Clone 此專案至本機:
 
 ```
-git clone https://github.com/kim1037/AC_expense_tracker.git
+git clone https://github.com/kim1037/AC-expense-tracker.git
 ```
 
 2. 開啟終端機(Terminal)，進入存放此專案的資料夾
