@@ -62,6 +62,8 @@ npm i [套件名稱]
 
 請修改 `.env.example` 成 .env，並將內容改成您的資訊
 
+請至[FACEBOOK](https://developers.facebook.com/apps)、[GOOGLE](https://console.cloud.google.com/)、[Github](https://github.com/settings/applications/new)設置密鑰。
+
 5. 匯入種子檔案
 
 ```
