@@ -27,19 +27,17 @@ window.addEventListener("load", (e) => {
       index += 1;
     }
   });
-  console.log(dataset);
   //'Transportation', 'Food', 'Housing', 'Other', 'Entertainment'
   let categories = new Set(dataset.map((data) => Object.keys(data)[0]));
+  
   //set to array
   categories = [...categories]; // chart's categorey
-  console.log(categories);
   let chartData = Array(5).fill(0); // chart's value
   dataset.forEach((data) => {
     const category = Object.keys(data)[0]; // Food or ...
     const index = categories.indexOf(category); // 0,1,2,3,4
     chartData[index] += data[category];
   });
-  console.log(chartData);
 
   const backgroundColor = [
     "rgba(255, 99, 132, 0.5)",
@@ -58,14 +56,6 @@ window.addEventListener("load", (e) => {
       datasets: [
         {
           backgroundColor: backgroundColor,
-          // [
-          //   "#73bfb8",
-          //   "#2364aa",
-          //   "#fec601",
-          //   "#3da5d9",
-          //   "#ea7317",
-          //   //ef476f
-          // ],
           borderColor: "#FFFFFF",
           borderWidth: 1,
           label: "Expense",
@@ -74,13 +64,12 @@ window.addEventListener("load", (e) => {
       ],
     },
     options: {
-      responsive: true, // 设置图表为响应式，根据屏幕窗口变化而变化
-      maintainAspectRatio: false, // 保持图表原有比例
+      responsive: true, // 是否隨著視窗大小變大
+      maintainAspectRatio: false, // 保持原有比例
       plugins: {
         labels: {
           render: "percentage",
-          //     fontColor: "#fff",
-          //     fontSize: 12,
+          fontSize: 12,
           fontFamily: "'Helvetica Neue', 'Helvetica', 'Arial', sans-serif",
           position: "border",
         },
