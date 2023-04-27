@@ -82,10 +82,11 @@
             {{#each finalRecords}}
               <tr>
                 <td>{{this.type}}</td>
-                <td><i class="{{this.icon}}"></i></td>
+                <td calss="record-icon"><i class="{{this.icon}}"></i>
+                </td>
                 <td>{{this.name}}</td>
                 <td>{{this.date}}</td>
-                <td>{{this.amount}}</td>
+                <td calss="record-amount">{{this.amount}}</td>
                 <td><a href="/expense/edit/{{this._id}}" class="edit-icon"><i
                       class="fa-solid fa-pen-to-square"
                     ></i></a></td>

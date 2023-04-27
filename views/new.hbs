@@ -1,12 +1,13 @@
 <div class="d-flex flex-column align-items-center">
   <h3>Create a new expense</h3>
   <div class="my-3" style="width: 80%;">
-    <form action="/expense/new" method="POST">
+    {{> message}}
+    <form action="/expense/new" method="POST" novalidate>
       <div class="mb-3 d-flex">
         <label for="numberType" class="input-group-text">Type*</label>
         <select name="type" class="form-select" id="numberType" required>
-          <option value="income">Income</option>
-          <option value="expense">Expense</option>
+          <option value="income" {{selected type 'income'}}>Income</option>
+          <option value="expense" {{selected type 'expense'}}>Expense</option>
         </select>
       </div>
       <div class="mb-3 d-flex">
@@ -38,7 +39,7 @@
         <select name="categoryId" class="form-select" id="category" required>
           <option value="">Choose...</option>
           {{#each categories}}
-            <option value="{{this._id}}">{{this.name}}</option>
+            <option value="{{this._id}}" {{selected this._id ../categoryId}}>{{this.name}}</option>
           {{/each}}
         </select>
       </div>

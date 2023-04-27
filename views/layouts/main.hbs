@@ -23,7 +23,8 @@
           <a class="navbar-brand" href="/"><i
               class="fa-sharp fa-solid fa-circle-dollar-to-slot"
             ></i>
-            {{#if isAuthenticated}}{{user.name}}'s{{else}}My{{/if}} Expense Tracker</a>
+            {{#if isAuthenticated}}{{user.name}}'s{{else}}My{{/if}}
+            Expense Tracker</a>
           {{#if isAuthenticated}}
             <a
               class="btn btn-outline-primary"
@@ -56,5 +57,10 @@
       src="https://kit.fontawesome.com/0261016bb2.js"
       crossorigin="anonymous"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script
+      src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"
+    ></script>
+    <script src="/javascripts/chart.js"></script>
   </body>
 </html>

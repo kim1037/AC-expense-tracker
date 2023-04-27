@@ -12,14 +12,38 @@ router.get("/new", (req, res) => {
     .catch((e) => console.log(e));
 });
 
-router.post("/new", (req, res) => {
-  const userId = req.user._id;
-  const { type, name, date, categoryId, amount } = req.body;
-  Record.create({ type, name, date, categoryId, amount, userId })
-    .then(() => {
+router.post("/new", async (req, res) => {
+  try {
+    let categories = await Category.find().lean();
+    categories = categories.map((cate) => {
+      cate._id = cate._id.toString();
+      return cate;
+    });
+    const userId = req.user._id;
+    const { type, name, date, categoryId, amount } = req.body;
+    const errors = [];
+
+    if (!type || !name || !date || !categoryId || !amount) {
+      errors.push({ message: "All fields are required." });
+    }
+
+    if (errors.length) {
+      res.render("new", {
+        categories,
+        type,
+        name,
+        date,
+        categoryId,
+        amount,
+        errors,
+      });
+    } else {
+      await Record.create({ type, name, date, categoryId, amount, userId });
       res.redirect("/");
-    })
-    .catch((e) => console.log(e));
+    }
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 router.get("/edit/:id", (req, res) => {

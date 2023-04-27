@@ -13,3 +13,7 @@ note.txt
 
 # dotenv
 .env
+
+#developing
+chart.hbs
+chart.js

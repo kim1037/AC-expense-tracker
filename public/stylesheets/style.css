@@ -12,6 +12,10 @@ td {
   text-align: center;
 }
 
+.record-category{
+  display: none;
+}
+
 #login-no-account {
   position: relative;
   width: 30%;

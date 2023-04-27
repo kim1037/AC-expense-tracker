@@ -16,6 +16,7 @@ router.get("/login", (req, res) => {
 router.post(
   "/login",
   function (req, res, next) {
+    //to remember email when login next time
     const { email, rememberMe } = req.body;
     if (rememberMe === "on") {
       req.session.email = email;
