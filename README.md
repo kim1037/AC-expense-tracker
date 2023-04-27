@@ -2,6 +2,12 @@
 
 使用 Node.js + Express + MongoDB 製作記帳web app，使用者可以註冊帳號、登入，並查看、新增、編輯或刪除專屬該用戶的收支明細，另外使用了chart.js於首頁顯示費用圓餅圖。
 
+可至此連結進行測試，[https://powerful-peak-48441.herokuapp.com/](https://powerful-peak-48441.herokuapp.com/) 
+
+測試帳號 : user1@ac.com ， 密碼：12345678
+
+*註：測試連結的FACEBOOK及GOOGLE登入方式尚未開通，若要完整測試請將此專案clone至您的本機中
+
 ## Screenshot - 畫面截圖
 
 #### Login & Register Page
