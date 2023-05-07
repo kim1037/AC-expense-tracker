@@ -7,7 +7,7 @@ router.get("/", (req, res) => {
   const userId = req.user._id;
   let income = 0;
   let expense = 0;
-  
+
   Category.find()
     .lean()
     .then((categories) => {
@@ -40,7 +40,7 @@ router.get("/", (req, res) => {
           income = income.toLocaleString();
           expense = expense.toLocaleString();
           totalAmount = totalAmount.toLocaleString();
-          
+
           res.render("index", {
             categories,
             finalRecords,
@@ -72,12 +72,13 @@ router.get("/sort", async (req, res) => {
           .sort(sort)
           .lean()
       : await Record.find({ userId }).sort(sort).lean();
-    
+
     //format records and create into database
     const finalRecords = records.map((record) => {
       const icon = categories.find(
-        (category) => category._id.toString() === record.categoryId.toString()).icon;
-      
+        (category) => category._id.toString() === record.categoryId.toString()
+      ).icon;
+
       //format date to YYYY-MM-DD
       record.date = new Date(record.date).toISOString().slice(0, 10);
 
@@ -99,7 +100,7 @@ router.get("/sort", async (req, res) => {
     income = income.toLocaleString();
     expense = expense.toLocaleString();
     totalAmount = totalAmount.toLocaleString();
-    
+
     res.render("index", {
       categories,
       finalRecords,

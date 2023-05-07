@@ -76,7 +76,13 @@ router.post("/register", (req, res) => {
             email,
             password: hash,
           })
-            .then(() => res.redirect("/users/login"))
+            .then((newUser) => {
+              req.logIn(newUser, (err) => {
+                if (err) return next(err);
+                req.flash("success_msg", "Register success.");
+                return res.redirect("/");
+              });
+            })
             .catch((e) => console.log(e));
         });
     });

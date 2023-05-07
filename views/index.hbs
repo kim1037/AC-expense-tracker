@@ -1,6 +1,7 @@
 <div>
- 
   <div class="mb-2">
+      {{>message}}
+     <!-- show amount here -->
     <div class="card border-0">
       <div class="card-body d-flex flex-column align-items-center">
         <h5 class="card-title fw-bold">Your Balance</h5>
@@ -20,10 +21,12 @@
             <h4 class="text-danger">${{expense}}</h4>
           </div>
         </div>
+        <!-- show chart.js here --> 
         {{> chart}}
       </div>
     </div>
   </div>
+   <!-- show sort and filter select here -->
    <div class="row d-flex justify-content-center">
     <form action="/sort" method="get" class="d-flex justify-content-around">
       <div class="input-group input-group-sm" style="width:60%">
@@ -66,6 +69,7 @@
       </div>
     </form>
   </div>
+   <!-- show the expense data here -->
   <div class="mb-3">
     <div class="card">
       <div class="card-body" style="overflow-x:auto;">
@@ -112,6 +116,8 @@
     </div>
 
   </div>
+
+   <!-- show the add expense button here -->
   <div class="d-flex justify-content-center">
     <a class="btn btn-warning" href="/expense/new" role="button">Add Expense</a>
   </div>
