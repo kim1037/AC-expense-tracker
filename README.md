@@ -6,8 +6,6 @@
 
 測試帳號 : user1@ac.com ， 密碼：12345678
 
-*註：測試連結的FACEBOOK及GOOGLE登入方式尚未開通，若要完整測試請將此專案clone至您的本機中
-
 ## Screenshot - 畫面截圖
 
 #### Login & Register Page
